@@ -1,0 +1,55 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="content col-md-12">
+			<br><br>
+			<div class="btn-group row">
+                <a class="btn btn-primary" href="{% url 'index_inscripciones' %}" role="button" id="Agregar_inscripcion">
+                	<i class='fa fa-smile-o'></i> Nueva inscripcion</a>
+            </div>
+            <br><br>
+			<div class="row table-responsive-sm">
+				<table class="table table-hover table-striped table-sm" contenteditable="false">
+	      			<thead>
+	      				<tr>
+	      					<th>Id</th>
+	      					<th>Fecha</th>
+	      					<th>Matrcicula</th>
+	      					<th>Registro</th>
+	      					<th></th>
+	      				</tr>
+	      			</thead>
+	      			<tbody>
+	      				{% if inscripciones %}
+	      				{% for inscripcion in inscripciones %}
+	      				<tr>
+	      					<td>{{ inscripcion.id }}</td>
+	      					<td>{{ inscripcion.fecha }}</td>
+	      					<td>{{ inscripcion.id_alumno }}</td>
+	      					<td>{{inscripcion.id_registro }}</td>
+	      					<td>
+                                <div class="btn-group">
+                                    <a class="btn btn-primary" href="{% url 'editar_alumno' alumno.id %}" 
+                                    role="button" id="Editar_Alumno"><i class='fa fa-edit'></i>Editar</a>
+                                    <a class="btn btn-danger" href="{% url 'eliminar_alumno' alumno.id %}" 
+                                    role="button" id="Eliminar_Alumno"><i class='fa fa-edit'></i>Eliminar</a>
+                                </div>
+                            </td>
+	      				</tr>
+	      				{% endfor %}
+	      				{% else %}
+		      				<tr>
+		      					<td colspan="5">
+		      					<h3>no hay Registro de inscripciones</h3>
+		      					</td>
+		      				</tr>
+						{% endif %}
+	      			</tbody>
+	      		</table>
+      		</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

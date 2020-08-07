@@ -1,0 +1,64 @@
+{% load static %}
+<div class="drawer">
+    <div class="drawer-title">
+        <!--  si paso -->
+        <figure class="drawer-profile avatar" style="">
+            <img src="{% static 'images/avatar/man-1.png' %}" style="width: 50px;height: 50px;border-radius: 25px;">
+        </figure>
+        <div class="drawer-text">
+            <a href="#">
+                <span class="drawer-"></span><br>
+                <span style="font-size: x-small;"> </span>
+            </a>
+          <!--  <a href={% url 'inicio:user_logout' %}>
+                <small>Cerrar Sesion</small> 
+            </a>  -->
+        </div>
+    </div>
+    <nav class="drawer-navigation">
+        <ul>
+            <li>
+                <a class="icons icon-bank active" href="{% url 'inicio:index' %}" style="text-decoration: none;">Inicio</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li>
+                <a class="icons icon-tag" rel="nofollow" href="{% url 'index_cursos' %}" style="text-decoration: none;">Cursos</a>
+            </li>       
+            <li>
+                <a class="icons icon-creditcard"  href="{% url 'index_profesor' %}" style="text-decoration: none;" >Profesores</a>
+            </li>
+            <li>
+                <a class="icons icon-cash"  href="{% url 'index_alumnos' %}" style="text-decoration: none;" >
+                    Alumnos
+                </a>
+            </li>
+             <li>
+                <a class="icons icon-cash"  href="{% url 'index_inscripciones' %}" style="text-decoration: none;" >
+                    Inscripciones
+                </a>
+            </li>
+
+            <li class="submenu">
+                <a class="icons icon-tag" rel="nofollow" href="#" style="text-decoration: none;">Académico
+                    <span class="icons icon-arrow-down" style="margin-left:20px; "></span>
+                </a>
+                <ul class="children">
+                    <li>
+                        <a class="icons icon-money-round" rel="nofollow" href="#" style="text-decoration: none;">Asignar Profesor a Curso</a>
+                        <a class="icons icon-money-round" rel="nofollow" href="#" style="text-decoration: none;">Administrar Evaluaciones</a>
+                        <a class="icons icon-money-round" rel="nofollow" href="" style="text-decoration: none;">Inscribir Alumno</a>
+                    </li>
+                </ul>
+            </li>
+            {% endif %}
+            <li>
+            {# Some logic on what to display for last item#}
+                {% if user.is_authenticated %}
+                    <a class="icons icon-bank" href="{% url 'inicio:user_logout' %}" style="text-decoration: none;">Salir</a>
+                {% else %}
+                    <a class="icons icon-bank" href="{% url 'inicio:user_login' %}" style="text-decoration: none;">Entrar</a>
+            {% endif %}
+            </li>
+        </ul>
+    </nav>
+</div>

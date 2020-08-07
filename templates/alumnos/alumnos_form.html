@@ -1,0 +1,69 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="content col-md-12 ">
+            <div class="jumbotron">
+            <h4 class="display-5">Registro de Alumnos</h4>
+            <hr>
+            <form method='POST' role="form">
+                {% csrf_token %}
+                {% if campo.errors %}
+                <ol role="alertdialog">
+                    {% for error in campo.errors %}
+                    <li role="alert"><strong>{{ error|escape }}</strong></li>
+                    {% endfor %}
+                </ol>
+                {% endif %}
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        {{ form.rut.label_tag }}
+                        {{ form.rut }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form.nombres.label_tag }}
+                        {{ form.nombres }}
+                    </div>
+                    <div class="form-group col-md-3">
+                        {{ form.telefono.label_tag }}
+                        {{ form.telefono }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        {{ form.correo.label_tag }}
+                        {{ form.correo }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        {{ form.fecha_nacimiento.label_tag }}
+                        {{ form.fecha_nacimiento }}
+                    </div>
+                    <div class="form-group col-md-4">
+                        {{ form.sexo.label_tag }}
+                        {{ form.sexo }}
+                    </div>
+                    <div class="form-group col-md-4">
+                        {{ form.tipo_sangre.label_tag }}
+                        {{ form.tipo_sangre }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        {{ form.domicilio.label_tag }}
+                        {{ form.domicilio }}
+                    </div>
+                </div>
+
+                <p>
+                <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+                </p>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+	
+{% endblock %}  

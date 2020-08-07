@@ -1,0 +1,51 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="content col-md-12 ">
+            <div class="jumbotron">
+            <h4 class="display-5">Añadir inscripcion</h4>
+            <hr>
+            <form method='POST' role="form">
+                {% csrf_token %}
+                {% if campo.errors %}
+                <ol role="alertdialog">
+                    {% for error in campo.errors %}
+                    <li role="alert"><strong>{{ error|escape }}</strong></li>
+                    {% endfor %}
+                </ol>
+                {% endif %}
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        {{ form.id.label_tag }}
+                        {{ form.id }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form.fecha.label_tag }}
+                        {{ form.fecha }}
+                    </div>
+                    <div class="form-group col-md-3">
+                        {{ form.id_alumno.label_tag }}
+                        {{ form.id_alumno }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        {{ form.id_relacion.label_tag }}
+                        {{ form.id_relacion }}
+                    </div>
+                </div>
+                
+                </div>
+
+                <p>
+                <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+                </p>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+	
+{% endblock %}  

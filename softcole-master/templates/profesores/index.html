@@ -1,0 +1,55 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="content col-md-12">
+			<br><br>
+			<div class="btn-group row">
+                <a class="btn btn-primary" href="{% url 'nuevo_profesor' %}" role="button" id="Agregar_Profesores">
+                	<i class='fa fa-smile-o'></i> Nuevo Profesor</a>
+            </div>
+            <br><br>
+			<div class="row table-responsive-sm">
+				<table class="table table-hover table-striped table-sm" contenteditable="false">
+	      			<thead>
+	      				<tr>
+	      					<th>Id</th>
+	      					<th>Nombre</th>
+	      					<th>Telefono</th>
+	      					<th>Registro</th>
+	      					<th></th>
+	      				</tr>
+	      			</thead>
+	      			<tbody>
+	      				{% if profesores %}
+	      				{% for profesor in profesores %}
+	      				<tr>
+	      					<td>{{ profesor.rut }}</td>
+	      					<td>{{ profesor.nombre }}</td>
+	      					<td>{{ profesor.telefono }}</td>
+	      					<td>{{ profesor.fecha }}</td>
+	      					<td>
+                                <div class="btn-group">
+                                    <a class="btn btn-primary" href="{% url 'editar_profesor' profesor.id %}" 
+                                    role="button" id="Editar_Profesor"><i class='fa fa-edit'></i>Editar</a>
+                                    <a class="btn btn-danger" href="{% url 'eliminar_profesor' profesor.id %}" 
+                                    role="button" id="Eliminar_Profesor"><i class='fa fa-edit'></i>Eliminar</a>
+                                </div>
+                            </td>
+	      				</tr>
+	      				{% endfor %}
+	      				{% else %}
+		      				<tr>
+		      					<td colspan="5">
+		      					<h3>no hay Registro de Profesores</h3>
+		      					</td>
+		      				</tr>
+						{% endif %}
+	      			</tbody>
+	      		</table>
+      		</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

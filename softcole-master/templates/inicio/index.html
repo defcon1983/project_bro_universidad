@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="content col-md-12">
+			<div class="jumbotron">
+			    <h1>Bienvenido a Sistema Escolar</h1>
+			    {% if user.is_authenticated %}
+			        <h2>Hola {{ user.username }}</h2>
+			    {% else %}
+			        <h2>Te invito a Entrar o Registrate...</h2>
+			    {% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
